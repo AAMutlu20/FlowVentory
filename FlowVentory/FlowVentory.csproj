@@ -6,4 +6,58 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MailKit" Version="4.8.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="MimeKit" Version="4.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="FlowVentory.DL\bin\**" />
+      <Compile Remove="FlowVentory.DL\obj\**" />
+      <Compile Remove="FlowVentory.BLL\bin\**" />
+      <Compile Remove="FlowVentory.BLL\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="FlowVentory.DL\bin\**" />
+      <EmbeddedResource Remove="FlowVentory.DL\obj\**" />
+      <EmbeddedResource Remove="FlowVentory.BLL\bin\**" />
+      <EmbeddedResource Remove="FlowVentory.BLL\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="FlowVentory.DL\bin\**" />
+      <Content Remove="FlowVentory.DL\obj\**" />
+      <Content Remove="FlowVentory.BLL\bin\**" />
+      <Content Remove="FlowVentory.BLL\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="FlowVentory.DL\bin\**" />
+      <None Remove="FlowVentory.DL\obj\**" />
+      <None Remove="FlowVentory.BLL\bin\**" />
+      <None Remove="FlowVentory.BLL\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\bin\Debug\net8.0\FlowVentory.DL.deps.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\bin\Debug\net8.0\FlowVentory.DL.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\obj\Debug\net8.0\FlowVentory.DL.sourcelink.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\obj\FlowVentory.DL.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.DL\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\bin\Debug\net8.0\FlowVentory.BLL.deps.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\bin\Debug\net8.0\FlowVentory.BLL.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\obj\Debug\net8.0\FlowVentory.BLL.sourcelink.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\obj\FlowVentory.BLL.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="FlowVentory.BLL\obj\project.packagespec.json" />
+    </ItemGroup>
+
 </Project>
