@@ -1,52 +1,5 @@
 ﻿@import url('global.css');
 
-.mode-switch {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    color: var(--app-content-main-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 8px;
-    cursor: pointer; }
-.mode-switch .moon {
-    fill: var(--app-content-main-color); }
-
-.mode-switch.active .moon {
-    fill: none; }
-
-.account-info {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    margin-top: auto; }
-.account-info-picture {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0; }
-.account-info-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; }
-.account-info-name {
-    font-size: 14px;
-    color: var(--sidebar-main-color);
-    margin: 0 8px;
-    overflow: hidden;
-    max-width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap; }
-.account-info-more {
-    color: var(--sidebar-main-color);
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    margin-left: auto; }
-
 .app-icon {
     color: var(--sidebar-main-color); }
 .app-icon svg {

@@ -1,5 +1,3 @@
-using FlowVentory.BLL;
-using FlowVentory.BLL.Services;
 using Flowventory.DL.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +12,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 var app = builder.Build();
 
-// Add Email Service.
-builder.Services.AddTransient<IEmailService, EmailService>();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -25,7 +20,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

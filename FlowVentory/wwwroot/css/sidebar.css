@@ -59,6 +59,30 @@
     width: 4px;
 }
 
+/* Light/Dark mode switch */
+.mode-switch-container {
+    margin-top: auto;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mode-switch {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--app-content-main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mode-switch .moon {
+    fill: var(--app-content-main-color);
+}
+
 /* Sidebar visibility on mobile */
 @media screen and (max-width: 1024px) {
     .sidebar {
