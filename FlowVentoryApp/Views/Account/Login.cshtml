@@ -1,0 +1,85 @@
+﻿@{
+Layout = null;
+ViewData["Title"] = "Login";
+}
+@model FlowVentoryApp.Models.ViewModels.LoginVM;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Guidely Login/Signin Form </title>
+    <link rel="stylesheet" href="~/css/Login.css"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="form-wrapper sign-in">
+        <form asp-action="Login" method="post">
+            <h2>Login</h2>
+            <div class="input-group">
+                <label asp-for="Username" class="input-label" id="username-label">Username</label>
+                <input asp-for="Username" id="username"/>
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="Password" class="input-label" id="password-label">Password</label>
+                <input asp-for="Password" type="password" id="password"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="remember-me">
+                <input asp-for="RememberMe" type="checkbox"/>
+                <label asp-for="RememberMe"></label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="sign-link">
+                <p>Don't have an account? <a asp-controller="Account" asp-action="Register" class="signUp-link">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const usernameLabel = document.getElementById('username-label');
+        const passwordLabel = document.getElementById('password-label');
+
+        function toggleLabel(input, label) {
+            if (input.value.length > 0) {
+                label.style.display = 'none';
+            } else {
+                label.style.display = 'block';
+            }
+        }
+
+        usernameInput.addEventListener('input', function() {
+            toggleLabel(usernameInput, usernameLabel);
+        });
+
+        passwordInput.addEventListener('input', function() {
+            toggleLabel(passwordInput, passwordLabel);
+        });
+
+        //Initialize the labels based on existing input
+        toggleLabel(usernameInput, usernameLabel);
+        toggleLabel(passwordInput, passwordLabel);
+        
+        //Display popup for errors
+        @if (!ViewData.ModelState.IsValid)
+        {
+        <text>
+        const errors = @Html.Raw(Json.Serialize(ViewData.ModelState.Where(m => m.Value.Errors.Count > 0).SelectMany(m => m.Value.Errors).Select(e => e.ErrorMessage).ToList()));
+        if (errors.length > 0) {
+            alert(errors.join('\n'));
+        }
+        </text>
+        }
+    });
+</script>
+</body>
+
+</html>

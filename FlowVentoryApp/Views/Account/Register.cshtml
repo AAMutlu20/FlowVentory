@@ -1,0 +1,80 @@
+﻿@{
+Layout = null;
+ViewData["Title"] = "Register";
+}
+@model FlowVentoryApp.Models.ViewModels.RegisterVM;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Guidely Login/Signin Form </title>
+    <link rel="stylesheet" href="~/css/Login.css"/>
+    
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="form-wrapper sign-up">
+        <form asp-action="Register" method="post">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username"/>
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email"/>
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <div class="sign-link">
+                <p>Already have an account? <a asp-controller="Account" asp-action="Login" class="signIn-link">Sign In</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.input-group input');
+        inputs.forEach(input => {
+            const label = input.previousElementSibling;
+
+            function toggleLabel() {
+                if (input.value.length > 0) {
+                    label.style.display = 'none';
+                } else {
+                    label.style.display = 'block';
+                }
+            }
+
+            input.addEventListener('input', toggleLabel);
+            //Initialize the label based on the input value
+            toggleLabel();
+        });
+
+        //Display popup for errors
+        @if (!ViewData.ModelState.IsValid)
+        {
+        <text>
+        const errors = @Html.Raw(Json.Serialize(ViewData.ModelState.Where(m => m.Value.Errors.Count > 0).SelectMany(m => m.Value.Errors).Select(e => e.ErrorMessage).ToList()));
+        if (errors.length > 0) {
+            alert(errors.join('\n'));
+        }
+        </text>
+        }
+    });
+</script>
+</body>
+
+</html>
