@@ -1,5 +1,7 @@
-﻿@using Microsoft.AspNetCore.Mvc.Rendering
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Rendering
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<IdentityUser> SignInManager
 <div class="sidebar">
     <div class="sidebar-header">
         <img src="~/img/FlowVentoryLong.png" alt="FlowVentory Logo" class="sidebar-logo" style="width: 100%; height: auto; max-width: 512px; max-height: 512px; object-fit: contain;"/>
@@ -7,23 +9,23 @@
 
     <!-- Sidebar buttons -->
     <ul class="sidebar-list">
-        <li class="sidebar-list-item @(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "active" : "")">
-            <a asp-page="/Index">
+        <li class="sidebar-list-item">
+            <a asp-controller="Home" asp-action="Index">
                 <ion-icon name="home-outline" style="font-size: 18px;"></ion-icon>
                 <span>Home</span>
             </a>
         </li>
-        <li class="sidebar-list-item @(ViewContext.RouteData.Values["page"]?.ToString() == "/Products" ? "active" : "")">
-            <a asp-page="/Products">
+        <li class="sidebar-list-item">
+            <a asp-controller="Products" asp-action="Products">
                 <ion-icon name="cart-outline" style="font-size: 18px;"></ion-icon>
                 <span>Products</span>
             </a>
         </li>
 
-        <li class="sidebar-list-item @(ViewContext.RouteData.Values["page"]?.ToString() == "/Auth" ? "active" : "")">
-            <a asp-page="/Auth">
+        <li class="sidebar-list-item">
+            <a>
                 <ion-icon name="pie-chart-outline" style="font-size: 18px;"></ion-icon>
-                <span>Statistics (now used as Auth)</span>
+                <span>Statistics</span>
             </a>
         </li>
         <li class="sidebar-list-item">
@@ -38,6 +40,34 @@
                 <span>Notifications</span>
             </a>
         </li>
+        @if (!SignInManager.IsSignedIn(User))
+        {
+            <li class="sidebar-list-item">
+                <a asp-controller="Account" asp-action="Login">
+                    <ion-icon name="notifications-outline" style="font-size: 18px;"></ion-icon>
+                    <span>Login</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item">
+                <a asp-controller="Account" asp-action="Register">
+                    <ion-icon name="notifications-outline" style="font-size: 18px;"></ion-icon>
+                    <span>Register</span>
+                </a>
+            </li>
+        }
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="sidebar-list-item">
+                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                    <button type="submit" class="sidebar-list-item" style="background: none; border: none; color: inherit; padding: 0;">
+                        <ion-icon name="notifications-outline" style="font-size: 18px;"></ion-icon>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </li>
+        }
+
+
     </ul>
 
     <!-- Account details -->

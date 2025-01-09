@@ -53,7 +53,7 @@ public class AccountController : Controller
                 return RedirectToAction("Index", "Home");
             }
             
-            // If failed, display Error
+            // If failed, show Error
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);

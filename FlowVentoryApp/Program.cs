@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FlowVentoryApp.Data;
+using FlowVentoryApp.Models;
+using FlowVentoryApp.Services;
 
 namespace FlowVentoryApp;
 
@@ -20,6 +22,10 @@ public class Program
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
+        
+        builder.Services.Configure<SMTPSettings>(builder.Configuration.GetSection("SMTPSettings"));
+        
+        builder.Services.AddTransient<EmailService>();
 
         var app = builder.Build();
 
